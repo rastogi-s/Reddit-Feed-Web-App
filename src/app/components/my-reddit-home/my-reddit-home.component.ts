@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-my-reddit-home',
@@ -7,7 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MyRedditHomeComponent implements OnInit {
 
-  constructor() { }
+  topic: string;
+
+  constructor(private router: Router) {
+  }
 
   ngOnInit() {
   }

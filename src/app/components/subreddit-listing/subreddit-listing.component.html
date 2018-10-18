@@ -1,29 +1,57 @@
 <div class="rounded bg-light p-5 background-pic">
   <h1 class=" text-center text-light rounded shadow p-2 mb-4 heading ">Listings
   </h1>
+  <div class="alert alert-danger" [hidden]="toggleError">
+    {{error}}
+  </div>
+  <nav class="navbar navbar-light bg-faded">
+    <form class="form-inline">
+      <input class="form-control mr-sm-2" type="text" placeholder="Search">
+      <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
+      <div class="float-right">
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="false">
+            {{timeString}}
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item btn" (click)="fetchListing(topic,'hour'); timeString='Past hour'">Past Hour</a>
+            <a class="dropdown-item btn" (click)="fetchListing(topic,'day'); timeString='Past 24 Hours'">Past 24 Hours</a>
+            <a class="dropdown-item btn" (click)="fetchListing(topic,'month'); timeString='Past Month'">Past Month</a>
+            <a class="dropdown-item btn" (click)="fetchListing(topic,'week'); timeString='Past Week'">Past Week</a>
+            <a class="dropdown-item btn" (click)="fetchListing(topic,'year'); timeString='Past year'">Past Year</a>
+            <a class="dropdown-item btn" (click)="fetchListing(topic,'all'); timeString='Of All Time'">Of All Time</a>
+          </div>
+        </div>
+      </div>
+    </form>
+  </nav>
   <ul class="list-group">
-    <!--<li *ngFor="let job of jobs"-->
-        <!--class="list-group-item bg-light my-2 rounded shadow-sm">-->
-      <!--<div [hidden]="job.jobSource !== 'github' ">-->
-        <!--<div class="row text-dark">-->
-          <!--<div class="col-8">-->
-            <!--<h5 style="color: rgba(0,123,255,0.85);">-->
-              <!--<a routerLink="view-job/{{job.id}}|{{job.jobSource}}">{{job.title}}</a></h5>-->
-          <!--</div>-->
-          <!--<div class="col-4" style="text-align: right">-->
-            <!--{{job.location}}-->
-          <!--</div>-->
-        <!--</div>-->
-        <!--<div class="row">-->
-          <!--<div class="col-8">{{job.company}} | {{job.type}}</div>-->
-          <!--<div class="col-4" style="text-align: right">-->
-            <!--<small>Posted on: {{job.created_at}}</small>-->
-          <!--</div>-->
-        <!--</div>-->
-      <!--</div>-->
+    <li *ngFor="let reddit of listings"
+        class="list-group-item bg-light my-2 rounded shadow-sm">
+      <div>
+        <div class="row text-dark">
+          <div class="col-8">
+            <h5 style="color: rgba(0,123,255,0.85);">
+              <a href={{reddit.url}}>{{reddit.title}}</a></h5>
+          </div>
+          <div class="col-4" style="text-align: right">
+            <i class="fa  fa-thumbs-up">&nbsp; {{reddit.ups}}</i> <br>
+            <i class="fa  fa-comments">&nbsp; {{reddit.num_comments}}</i>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-8">
+            <small>Posted By : {{reddit.author}}</small>
+          </div>
+          <div class="col-4" style="text-align: right">
+            <small>Posted on: {{ reddit.created}}</small>
+          </div>
+        </div>
+      </div>
 
 
-  <!--</li>-->
+    </li>
   </ul>
 </div>
 <app-footer></app-footer>

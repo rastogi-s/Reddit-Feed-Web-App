@@ -5,7 +5,7 @@ import {SubredditListingComponent} from './components/subreddit-listing/subreddi
 const appRoutes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
   {path: 'home', component: MyRedditHomeComponent},
-  {path: 'subreddit', component: SubredditListingComponent},
+  {path: 'subreddit/:topic', component: SubredditListingComponent},
   {path: '**', component: MyRedditHomeComponent} // last
 ];
 export const routing = RouterModule.forRoot(appRoutes);

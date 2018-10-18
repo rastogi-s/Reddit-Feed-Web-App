@@ -6,6 +6,7 @@ import { SubredditListingComponent } from './components/subreddit-listing/subred
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { MyRedditHomeComponent } from './components/my-reddit-home/my-reddit-home.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { MyRedditHomeComponent } from './components/my-reddit-home/my-reddit-hom
     MyRedditHomeComponent
   ],
   imports: [
+    FormsModule,
     BrowserModule,
     routing
   ],

@@ -9,18 +9,13 @@
             <div class="input-group-prepend">
               <span class="input-group-text" id=""><i class="fa fa-search"></i></span>
             </div>
-            <!--<input type="text" class="form-control" placeholder="Keyword or Title" aria-label="Keyword or Title"-->
-                   <!--aria-describedby="basic-addon1" [(ngModel)]="keywordOrTitle" name="keywordOrTitle">-->
-            <input type="text" class="form-control" placeholder="Keyword or Title" aria-label="Keyword or Title"
-                   aria-describedby="basic-addon1"  name="keywordOrTitle">
+            <input type="text" class="form-control" placeholder="Subreddit" aria-label="Subreddit"
+                   aria-describedby="basic-addon1" [(ngModel)]="topic"  name="topic">
           </div>
         </div>
       </div>
-      <!--<button class="btn btn-light w-25"-->
-              <!--routerLink="/job-list/{{location!='' && location!=null ? location:' '}}/{{keywordOrTitle!='' &&-->
-              <!--keywordOrTitle!=null? keywordOrTitle: ' '}}">Search</button> -->
       <button class="btn btn-light w-25"
-              routerLink="/subreddit">Search</button>
+              routerLink="/subreddit/{{topic!='' && topic!=null ? topic:' '}}">Search</button>
     </div>
     <div class="product-device box-shadow d-none d-md-block"></div>
     <div class="product-device product-device-2 box-shadow d-none d-md-block"></div>
