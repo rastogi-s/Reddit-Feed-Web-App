@@ -1,0 +1,5 @@
+.hero{
+  background-image: url('./../../../assets/images/photo-1527049979667-990f1d0d8e7f.jpg');
+  background-size: contain;
+  padding: 75px;
+}

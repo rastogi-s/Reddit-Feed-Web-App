@@ -1,0 +1,18 @@
+
+.title {
+  font-family: "Fira Code Retina";
+  font-size: 50px;
+  font-weight: bold;
+  color:black;
+}
+
+.nav-link {
+  font-family: "Arial";
+  font-size: large;
+
+}
+
+.background{
+  background-image:url("../../../assets/images/joanna-kosinska-439234-unsplash.jpg");
+  background-size: cover;
+}

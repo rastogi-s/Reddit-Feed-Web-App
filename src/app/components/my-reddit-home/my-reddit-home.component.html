@@ -1,0 +1,29 @@
+<div >
+  <div class="position-relative overflow-hidden text-center bg-dark text-light hero">
+    <div class="col-md-5 p-lg-5 mx-auto my-5">
+      <h1 class="display-4 font-weight-normal">FIND REDDITS</h1>
+      <p class="lead font-weight-normal">Search here about any topic</p>
+      <div class="row">
+        <div class="col">
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id=""><i class="fa fa-search"></i></span>
+            </div>
+            <!--<input type="text" class="form-control" placeholder="Keyword or Title" aria-label="Keyword or Title"-->
+                   <!--aria-describedby="basic-addon1" [(ngModel)]="keywordOrTitle" name="keywordOrTitle">-->
+            <input type="text" class="form-control" placeholder="Keyword or Title" aria-label="Keyword or Title"
+                   aria-describedby="basic-addon1"  name="keywordOrTitle">
+          </div>
+        </div>
+      </div>
+      <!--<button class="btn btn-light w-25"-->
+              <!--routerLink="/job-list/{{location!='' && location!=null ? location:' '}}/{{keywordOrTitle!='' &&-->
+              <!--keywordOrTitle!=null? keywordOrTitle: ' '}}">Search</button> -->
+      <button class="btn btn-light w-25"
+              routerLink="/subreddit">Search</button>
+    </div>
+    <div class="product-device box-shadow d-none d-md-block"></div>
+    <div class="product-device product-device-2 box-shadow d-none d-md-block"></div>
+
+  </div>
+</div>
