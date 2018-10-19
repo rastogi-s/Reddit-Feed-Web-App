@@ -12,9 +12,6 @@ export class SubredditServiceService {
   }
 
   fetchUReddits(topic, time, after) {
-    console.log(topic);
-    console.log(after);
-    console.log(time);
     let url = this.url;
     url = url.replace('default', topic) + ((time !== null) ? '?t=' + time : '') + ((after != null) ? '?after=' + after : '');
     console.log(url);
