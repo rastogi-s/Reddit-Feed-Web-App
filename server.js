@@ -9,7 +9,8 @@ app.use(express.static(path.join(__dirname+ '/dist/reddit-web-app')));
 
 app.get('/*', function(req,res) {
 
-  res.sendFile(express.static(path.join(__dirname+'/dist/reddit-web-app/index.html')));
+ // res.sendFile(express.static(path.join(__dirname+'/dist/reddit-web-app/index.html')));
+  res.sendFile(path.resolve(app.get('appPath') + '/index.html'));
 });
 
 // Start the app by listening on the default Heroku port
