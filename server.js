@@ -5,6 +5,7 @@ const path = require('path');
 const app = express();
 
 // Serve only the static files form the dist directory
+console.log(path.join(__dirname, '/dist/reddit-web-app'));
 app.use(express.static(path.join(__dirname, '/dist/reddit-web-app')));
 
 app.get('/*', function(req,res) {
