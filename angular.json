@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "RedditWebApp": {
+    "reddit-web-app": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/RedditWebApp",
+            "outputPath": "dist/reddit-web-app",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -50,18 +50,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "RedditWebApp:build"
+            "browserTarget": "reddit-web-app:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "RedditWebApp:build:production"
+              "browserTarget": "reddit-web-app:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "RedditWebApp:build"
+            "browserTarget": "reddit-web-app:build"
           }
         },
         "test": {
@@ -95,7 +95,7 @@
         }
       }
     },
-    "RedditWebApp-e2e": {
+    "reddit-web-app-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "architect": {
@@ -103,11 +103,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "RedditWebApp:serve"
+            "devServerTarget": "reddit-web-app:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "RedditWebApp:serve:production"
+              "devServerTarget": "reddit-web-app:serve:production"
             }
           }
         },
@@ -123,5 +123,5 @@
       }
     }
   },
-  "defaultProject": "RedditWebApp"
+  "defaultProject": "reddit-web-app"
 }
