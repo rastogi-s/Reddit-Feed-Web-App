@@ -1,5 +1,5 @@
 {
-  "name": "reddit-web-app",
+  "name": "whiteboard-client-angular",
   "version": "0.0.0",
   "scripts": {
     "postinstall": "ng build --aot --prod",
