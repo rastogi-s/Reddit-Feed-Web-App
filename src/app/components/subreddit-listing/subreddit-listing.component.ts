@@ -18,10 +18,12 @@ export class SubredditListingComponent implements OnInit {
   searchTopic: string;
   leftPage: boolean;
   rightPage: boolean;
+  prevName: string;
   afterName: string;
 
   constructor(private service: SubredditServiceService, private route: ActivatedRoute) {
     this.afterName = null;
+    this.prevName = null;
     this.leftPage = true;
     this.rightPage = true;
     this.timeString = 'Past 24 hours';
@@ -39,33 +41,35 @@ export class SubredditListingComponent implements OnInit {
   }
 
   fetchListing(topic, time = null, after = null) {
+    this.leftPage = true;
+    this.rightPage = true;
     this.listingTime = time;
     this.topic = topic;
-    // this.afterName = after;
     this.service.fetchUReddits(topic, time, after).then((listings) => {
       if (listings != null && listings.error !== 404) {
+        if (listings.data.after == null || listings.data.after === this.afterName) {
+          this.rightPage = true;
 
-        this.afterName = listings.data.after;
-
-        if (this.afterName == null) {
-          this.rightPage = true ;
         } else {
-          this.rightPage = false ;
+          this.rightPage = false;
+          this.afterName = listings.data.after;
         }
 
-          this.listings = listings.data.children.map((obj) => obj.data).map((obj => {
-            const newObj = obj;
-            newObj.created = new Date(obj.created * 1000).toDateString();
-            return newObj;
-          }));
+        this.listings = listings.data.children.map((obj) => obj.data).map((obj => {
+          const newObj = obj;
+          newObj.created = new Date(obj.created * 1000).toDateString();
+          return newObj;
+        }));
         this.toggleError = true;
       } else {
         this.error = 'Something went wrong. Please select the keyword judicially.';
         this.toggleError = false;
+        this.listings = [];
       }
     }).catch((error) => {
       this.error = error.toString().split(':')[1];
       this.toggleError = false;
+      this.listings = [];
     });
 
   }
