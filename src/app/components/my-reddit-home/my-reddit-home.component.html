@@ -1,4 +1,4 @@
-<div >
+<div>
   <div class="position-relative overflow-hidden text-center bg-dark text-light hero">
     <div class="col-md-5 p-lg-5 mx-auto my-5">
       <h1 class="display-4 font-weight-normal">FIND REDDITS</h1>
@@ -10,12 +10,14 @@
               <span class="input-group-text" id=""><i class="fa fa-search"></i></span>
             </div>
             <input type="text" class="form-control" placeholder="Subreddit" aria-label="Subreddit"
-                   aria-describedby="basic-addon1" [(ngModel)]="topic"  name="topic">
+                   aria-describedby="basic-addon1" [(ngModel)]="topic"
+                   name="topic">
           </div>
         </div>
       </div>
       <button class="btn btn-light w-25"
-              routerLink="/subreddit/{{topic!='' && topic!=null ? topic:' '}}">Search</button>
+              routerLink="/subreddit/{{topic!='' && topic!=null ? topic:' '}}">Search
+      </button>
     </div>
     <div class="product-device box-shadow d-none d-md-block"></div>
     <div class="product-device product-device-2 box-shadow d-none d-md-block"></div>

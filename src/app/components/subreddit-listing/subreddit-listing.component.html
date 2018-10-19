@@ -1,30 +1,48 @@
 <div class="rounded bg-light p-5 background-pic">
-  <h1 class=" text-center text-light rounded shadow p-2 mb-4 heading ">Listings
+  <h1 class=" text-center text-light rounded shadow p-2 mb-4 heading ">Listings for {{topic}}
   </h1>
   <div class="alert alert-danger" [hidden]="toggleError">
     {{error}}
   </div>
-  <nav class="navbar navbar-light bg-faded">
-    <form class="form-inline">
-      <input class="form-control mr-sm-2" type="text" placeholder="Search">
-      <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
-      <div class="float-right">
-        <div class="dropdown">
-          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-                  aria-haspopup="true" aria-expanded="false">
-            {{timeString}}
-          </button>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item btn" (click)="fetchListing(topic,'hour'); timeString='Past hour'">Past Hour</a>
-            <a class="dropdown-item btn" (click)="fetchListing(topic,'day'); timeString='Past 24 Hours'">Past 24 Hours</a>
-            <a class="dropdown-item btn" (click)="fetchListing(topic,'month'); timeString='Past Month'">Past Month</a>
-            <a class="dropdown-item btn" (click)="fetchListing(topic,'week'); timeString='Past Week'">Past Week</a>
-            <a class="dropdown-item btn" (click)="fetchListing(topic,'year'); timeString='Past year'">Past Year</a>
-            <a class="dropdown-item btn" (click)="fetchListing(topic,'all'); timeString='Of All Time'">Of All Time</a>
-          </div>
-        </div>
+
+
+  <nav class="navbar navbar-light justify-content-between mb-3">
+
+    <a class="btn" [hidden]="leftPage" (click)="fetchListing()"> <i
+      class="fas fa-arrow-circle-left fa-3x text-white"></i></a>
+    <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle " type="button" id="dropdownMenuButton" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+        {{timeString}}
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item btn" (click)="fetchListing(topic,'hour'); timeString='Past hour'">Past Hour</a>
+        <a class="dropdown-item btn" (click)="fetchListing(topic,'day'); timeString='Past 24 Hours'">Past 24
+          Hours</a>
+        <a class="dropdown-item btn" (click)="fetchListing(topic,'month'); timeString='Past Month'">Past Month</a>
+        <a class="dropdown-item btn" (click)="fetchListing(topic,'week'); timeString='Past Week'">Past Week</a>
+        <a class="dropdown-item btn" (click)="fetchListing(topic,'year'); timeString='Past year'">Past Year</a>
+        <a class="dropdown-item btn" (click)="fetchListing(topic,'all'); timeString='Of All Time'">Of All Time</a>
       </div>
+    </div>
+    <button class="btn bg-transparent"></button>
+    <button class="btn bg-transparent"></button>
+    <button class="btn bg-transparent"></button>
+    <button class="btn bg-transparent"></button>
+    <button class="btn bg-transparent"></button>
+    <button class="btn bg-transparent"></button>
+    <button class="btn bg-transparent"></button>
+    <button class="btn bg-transparent"></button>
+    <form class="form-inline">
+      <input class="form-control mr-sm-2" type="search" [(ngModel)]="searchTopic" placeholder="Search"
+             [ngModelOptions]="{standalone: true}"
+             aria-label="Search">
+      <button class="btn btn-success my-2 my-sm-0" type="button" (click)="fetchListing(searchTopic,listingTime)">
+        Search
+      </button>
     </form>
+    <a class="btn" [hidden]="rightPage" (click)="fetchListing(topic,listingTime, afterName)"><i
+      class="fas fa-arrow-circle-right fa-3x text-white"></i></a>
   </nav>
   <ul class="list-group">
     <li *ngFor="let reddit of listings"

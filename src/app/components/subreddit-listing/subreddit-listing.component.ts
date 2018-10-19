@@ -15,11 +15,18 @@ export class SubredditListingComponent implements OnInit {
   listingTime: string;
   timeString: string;
   topic: string;
+  searchTopic: string;
+  leftPage: boolean;
+  rightPage: boolean;
+  afterName: string;
 
   constructor(private service: SubredditServiceService, private route: ActivatedRoute) {
+    this.afterName = null;
+    this.leftPage = true;
+    this.rightPage = true;
     this.timeString = 'Past 24 hours';
     this.listingTime = 'day';
-    this.topic = ' ';
+    this.topic = '';
     this.toggleError = true;
     this.error = '';
     this.route.params.subscribe(param => {
@@ -31,18 +38,27 @@ export class SubredditListingComponent implements OnInit {
     }
   }
 
-  fetchListing(topic, time = null) {
-    console.log(time);
-    this.service.fetchUReddits(topic, time).then((listings) => {
+  fetchListing(topic, time = null, after = null) {
+    this.listingTime = time;
+    this.topic = topic;
+    // this.afterName = after;
+    this.service.fetchUReddits(topic, time, after).then((listings) => {
       if (listings != null && listings.error !== 404) {
 
-        this.listings = listings.data.children.map((obj) => obj.data).map((obj => {
-          const newObj = obj;
-          console.log(obj.created);
-          newObj.created = new Date(obj.created * 1000).toDateString();
-          return newObj;
-        }));
-        console.log(this.listings);
+        this.afterName = listings.data.after;
+
+        if (this.afterName == null) {
+          this.rightPage = true ;
+        } else {
+          this.rightPage = false ;
+        }
+
+          this.listings = listings.data.children.map((obj) => obj.data).map((obj => {
+            const newObj = obj;
+            newObj.created = new Date(obj.created * 1000).toDateString();
+            return newObj;
+          }));
+        this.toggleError = true;
       } else {
         this.error = 'Something went wrong. Please select the keyword judicially.';
         this.toggleError = false;

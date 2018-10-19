@@ -11,14 +11,13 @@ export class SubredditServiceService {
     this.url = 'https://www.reddit.com/r/default/top/.json';
   }
 
-  fetchUReddits(topic, time) {
-
+  fetchUReddits(topic, time, after) {
+    console.log(topic);
+    console.log(after);
+    console.log(time);
     let url = this.url;
-    if (time == null) {
-      url.replace('default', topic);
-    } else {
-      url = url.replace('default', topic) + '?t=' + time;
-    }
+    url = url.replace('default', topic) + ((time !== null) ? '?t=' + time : '') + ((after != null) ? '?after=' + after : '');
+    console.log(url);
     return fetch(url
     ).then(response => {
       if (response.headers.get('content-type') != null) {
